@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".ShowFriendsTimelineActivity" >
+
+    <RelativeLayout
+        android:id="@+id/weiboShowButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5ccd4" >
+
+        <Button
+            android:id="@+id/returnMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="@dimen/padding_small"
+            android:gravity="center"
+            android:text="返回" />
+
+        <Button
+            android:id="@+id/refreshWeibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/returnMain"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/padding_small"
+            android:text="刷新" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/weiboShowLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/Msglist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:background="#BBFFFFFF"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="2dp"
+            android:fastScrollEnabled="true"
+            android:focusable="true" >
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ProgressBar
+                android:id="@+id/loading"
+                style="@style/progressStyle"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="正在载入"
+                android:textColor="#9c9c9c"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

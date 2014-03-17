@@ -1,0 +1,282 @@
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/buttonLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp" >
+
+                    <LinearLayout
+                        android:id="@+id/iconLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:id="@+id/userIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription="用户头像"
+                            android:src="@drawable/add_selector" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/weiboAuth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onOauth"
+                        android:text="微博认证" />
+
+                    <Button
+                        android:id="@+id/weiboCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="注销微博" />
+
+                    <Button
+                        android:id="@+id/startWeibo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="开始微博" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/infoLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/textLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="left|center"
+                        android:orientation="vertical"
+                        android:padding="5dp" >
+
+                        <TextView
+                            android:id="@+id/userName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="用户名：" />
+
+                        <TextView
+                            android:id="@+id/weiboShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="认证信息：" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+
+                    <LinearLayout
+                        android:id="@+id/loadingInMainLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ProgressBar
+                            android:id="@+id/loading"
+                            style="@style/progressStyle"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="正在载入"
+                            android:textColor="#9c9c9c"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/renrenbuttonLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="5dp" >
+
+                    <com.renren.api.connect.android.view.ProfilePhotoView
+                        android:id="@+id/renren_sdk_profile_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+                    </com.renren.api.connect.android.view.ProfilePhotoView>
+
+                    <ImageView
+                        android:id="@+id/renrenUserIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="用户头像"
+                        android:src="@drawable/add_selector"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/renrenAuth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onOauth"
+                        android:text="人人认证" />
+
+                    <Button
+                        android:id="@+id/renrenCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="注销人人" />
+
+                    <Button
+                        android:id="@+id/startRenren"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="开始人人"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/renrenInfo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/renrentext"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="left|center"
+                        android:orientation="vertical"
+                        android:padding="5dp" >
+
+                        <LinearLayout
+                            android:id="@+id/nameLayout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="用户名：" />
+
+                            <com.renren.api.connect.android.view.ProfileNameView
+                                android:id="@+id/renren_sdk_profile_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingLeft="10dip"
+                                android:textColor="#000000"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/renrenShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="认证信息：" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+
+                    <ListView
+                        android:id="@+id/renrenMsglist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/renren_sdk_edittext_bg"
+                        android:cacheColorHint="#00000000"
+                        android:dividerHeight="2dp"
+                        android:fastScrollEnabled="true"
+                        android:focusable="true"
+                        android:visibility="gone" >
+                    </ListView>
+
+                    <LinearLayout
+                        android:id="@+id/renrenLoadingLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <ProgressBar
+                            android:id="@+id/renrenLoading"
+                            style="@style/progressStyle"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:layout_gravity="center" >
+                        </ProgressBar>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="正在载入"
+                            android:textColor="#9c9c9c"
+                            android:textSize="12sp" >
+                        </TextView>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="bottom|center_vertical" >
+        </TabWidget>
+    </LinearLayout>
+
+</TabHost>
